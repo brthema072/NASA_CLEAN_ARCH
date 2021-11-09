@@ -10,7 +10,7 @@ class SpaceMediaModel extends SpaceMediaEntity {
             description: description,
             mediaType: mediaType,
             title: title,
-            meidaUrl: mediaType);
+            mediaUrl: mediaUrl);
 
   factory SpaceMediaModel.fromJson(Map<String, dynamic> json) =>
       SpaceMediaModel(
@@ -23,6 +23,6 @@ class SpaceMediaModel extends SpaceMediaEntity {
         'explanation': description,
         'media_type': mediaType,
         'title': title,
-        'url': meidaUrl,
+        'url': mediaUrl,
       };
 }

@@ -23,7 +23,7 @@ void main() {
       description: 'Descrção de teste',
       mediaType: 'image',
       title: 'Título de teste',
-      meidaUrl: 'url de teste');
+      mediaUrl: 'url de teste');
 
   final tDate = DateTime(2021, 11, 06);
 
