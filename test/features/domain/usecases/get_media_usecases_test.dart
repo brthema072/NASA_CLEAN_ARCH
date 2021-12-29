@@ -6,6 +6,9 @@ import 'package:nasa_clean_arch/features/domain/entities/space_media_entity.dart
 import 'package:nasa_clean_arch/features/domain/repositories/space_media_repository.dart';
 import 'package:nasa_clean_arch/features/domain/usecases/get_space_media_from_date_usecase.dart';
 
+import '../../mocks/date_mock.dart';
+import '../../mocks/space_media_entity_mock.dart';
+
 class MockSpaceMediaRepository extends Mock implements ISpaceMediaRepository {}
 
 void main() {
@@ -19,13 +22,6 @@ void main() {
   });
 
   // ignore: prefer_const_constructors
-  final tSpaceMedia = SpaceMediaEntity(
-      description: 'Descrção de teste',
-      mediaType: 'image',
-      title: 'Título de teste',
-      mediaUrl: 'url de teste');
-
-  final tDate = DateTime(2021, 11, 06);
 
   test('should get space media from media for a given date from the repository',
       () async {
@@ -43,5 +39,12 @@ void main() {
     final result = await usecase(tDate);
     expect(result, Left(ServerFailure()));
     verify(() => repository.getSpaceMediaFromDate(tDate));
+  });
+
+  test('Should return NullParamFailure when receives a null param', () async {
+    final result = await usecase(null);
+
+    expect(result, Left(NullParamFailure()));
+    verifyNever(() => repository.getSpaceMediaFromDate(tDate));
   });
 }
